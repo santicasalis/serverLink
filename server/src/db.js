@@ -34,17 +34,17 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 
 const {
-  // Admin,
-  // Customer,
-  // CustomerTattooArtistAppointment,
-  // Appointment,
-  // PriceRange,
-  // Publication,
-  // Review,
+  Admin,
+  Customer,
+  CustomerTattooArtistAppointment,
+  Appointment,
+  PriceRange,
+  Publication,
+  Review,
   TattooArtist,
-  // TattooStyle,
-  // TimeAvailability,
-  // TimeAvailabilityException,
+  TattooStyle,
+  TimeAvailability,
+  TimeAvailabilityException,
 } = sequelize.models;
 
 Customer.belongsToMany(TattooArtist, {
