@@ -34,7 +34,7 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 
 const {
-  Admin,
+  // Admin,
   Customer,
   CustomerTattooArtistAppointment,
   Appointment,
