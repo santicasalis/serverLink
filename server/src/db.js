@@ -13,77 +13,77 @@ const sequelize = new Sequelize(DB_DEPLOY, {
 
 const basename = path.basename(__filename);
 
-const modelDefiners = [];
+// const modelDefiners = [];
 
-fs.readdirSync(path.join(__dirname, "/models"))
-  .filter(
-    (file) =>
-      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
-  )
-  .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, "/models", file)));
-  });
+// fs.readdirSync(path.join(__dirname, "/models"))
+//   .filter(
+//     (file) =>
+//       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
+//   )
+//   .forEach((file) => {
+//     modelDefiners.push(require(path.join(__dirname, "/models", file)));
+//   });
 
-modelDefiners.forEach((model) => model(sequelize));
+// modelDefiners.forEach((model) => model(sequelize));
 
-let entries = Object.entries(sequelize.models);
-let capsEntries = entries.map((entry) => [
-  entry[0][0].toUpperCase() + entry[0].slice(1),
-  entry[1],
-]);
-sequelize.models = Object.fromEntries(capsEntries);
+// let entries = Object.entries(sequelize.models);
+// let capsEntries = entries.map((entry) => [
+//   entry[0][0].toUpperCase() + entry[0].slice(1),
+//   entry[1],
+// ]);
+// sequelize.models = Object.fromEntries(capsEntries);
 
-const {
-  Admin,
-  Customer,
-  CustomerTattooArtistAppointment,
-  Appointment,
-  PriceRange,
-  Publication,
-  Review,
-  TattooArtist,
-  TattooStyle,
-  TimeAvailability,
-  TimeAvailabilityException,
-} = sequelize.models;
+// const {
+//   Admin,
+//   Customer,
+//   CustomerTattooArtistAppointment,
+//   Appointment,
+//   PriceRange,
+//   Publication,
+//   Review,
+//   TattooArtist,
+//   TattooStyle,
+//   TimeAvailability,
+//   TimeAvailabilityException,
+// } = sequelize.models;
 
-Customer.belongsToMany(TattooArtist, {
-  through: CustomerTattooArtistAppointment,
-});
-TattooArtist.belongsToMany(Customer, {
-  through: CustomerTattooArtistAppointment,
-});
-CustomerTattooArtistAppointment.belongsTo(Appointment);
-Appointment.hasOne(CustomerTattooArtistAppointment);
+// Customer.belongsToMany(TattooArtist, {
+//   through: CustomerTattooArtistAppointment,
+// });
+// TattooArtist.belongsToMany(Customer, {
+//   through: CustomerTattooArtistAppointment,
+// });
+// CustomerTattooArtistAppointment.belongsTo(Appointment);
+// Appointment.hasOne(CustomerTattooArtistAppointment);
 
-TattooArtist.belongsToMany(Customer, { through: Review, timestamps: false });
-Customer.belongsToMany(TattooArtist, { through: Review, timestamps: false });
+// TattooArtist.belongsToMany(Customer, { through: Review, timestamps: false });
+// Customer.belongsToMany(TattooArtist, { through: Review, timestamps: false });
 
-// TattooArtist - TattooStyles relation:
-TattooArtist.belongsToMany(TattooStyle, {
-  through: "ArtistStyle",
-  timestamps: false,
-});
-TattooStyle.belongsToMany(TattooArtist, {
-  through: "ArtistStyle",
-  timestamps: false,
-});
+// // TattooArtist - TattooStyles relation:
+// TattooArtist.belongsToMany(TattooStyle, {
+//   through: "ArtistStyle",
+//   timestamps: false,
+// });
+// TattooStyle.belongsToMany(TattooArtist, {
+//   through: "ArtistStyle",
+//   timestamps: false,
+// });
 
-// TattooArtist - Publication relation:
-TattooArtist.hasMany(Publication);
-Publication.belongsTo(TattooArtist);
+// // TattooArtist - Publication relation:
+// TattooArtist.hasMany(Publication);
+// Publication.belongsTo(TattooArtist);
 
-// TattooArtist - TimeAvailability relation:
-TattooArtist.hasMany(TimeAvailability);
-TimeAvailability.belongsTo(TattooArtist);
+// // TattooArtist - TimeAvailability relation:
+// TattooArtist.hasMany(TimeAvailability);
+// TimeAvailability.belongsTo(TattooArtist);
 
-// TattooArtist - TimeAvailabilityException relation:
-TattooArtist.hasMany(TimeAvailabilityException);
-TimeAvailabilityException.belongsTo(TattooArtist);
+// // TattooArtist - TimeAvailabilityException relation:
+// TattooArtist.hasMany(TimeAvailabilityException);
+// TimeAvailabilityException.belongsTo(TattooArtist);
 
-// TattooArtist - PriceRange relation:
-TattooArtist.hasMany(PriceRange);
-PriceRange.belongsTo(TattooArtist);
+// // TattooArtist - PriceRange relation:
+// TattooArtist.hasMany(PriceRange);
+// PriceRange.belongsTo(TattooArtist);
 
 module.exports = {
   ...sequelize.models,
