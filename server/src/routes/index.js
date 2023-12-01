@@ -1,9 +1,9 @@
 const { Router } = require("express");
 const router = Router();
 
-const tattooArtistsRouter = require("./tattooArtistRouter.");
-const customerRouter = require("./customerRouter");
-const publicationRouter = require("./publicationRouter.");
+const tattooArtistsRouter = require("./tattooArtistRouter");
+// const customerRouter = require("./customerRouter");
+const publicationRouter = require("./publicationRouter");
 const PriceRangeRouter = require("./priceRangeRouter");
 const tattoStyleRouter = require("./tattooStyleRouter");
 const filterRouter = require("./filterRouter");
