@@ -1,19 +1,19 @@
 const { Router } = require("express");
 const router = Router();
 
-const tattooArtistsRouter = require("./tattooArtistRouter");
-const customerRouter = require("./customerRouter");
-const publicationRouter = require("./publicationRouter");
-const PriceRangeRouter = require("./priceRangeRouter");
-const tattoStyleRouter = require("./tattooStyleRouter");
-const filterRouter = require("./filterRouter");
-const timeAvailabilityRouter = require("./timeAvailabilityRouter");
-const appointmentRouter = require("./appointmentRouter");
-const loginRouter = require("./loginRouter");
-const nodemailerRouter = require("./nodemailerRouter");
-const timeAvailabilityExceptionRouter= require("./timeAvailabilityExceptionRouter")
-const adminRouter= require("./adminRouter")
-const reviewRouter = require("./reviewRouter")
+const tattooArtistsRouter = require("./tattooArtistRouter.js");
+const customerRouter = require("./customerRouter.js");
+const publicationRouter = require("./publicationRouter.js");
+const PriceRangeRouter = require("./priceRangeRouter.js");
+const tattoStyleRouter = require("./tattooStyleRouter.js");
+const filterRouter = require("./filterRouter.js");
+const timeAvailabilityRouter = require("./timeAvailabilityRouter.js");
+const appointmentRouter = require("./appointmentRouter.js");
+const loginRouter = require("./loginRouter.js");
+const nodemailerRouter = require("./nodemailerRouter.js");
+const timeAvailabilityExceptionRouter = require("./timeAvailabilityExceptionRouter.js");
+const adminRouter = require("./adminRouter.js");
+const reviewRouter = require("./reviewRouter.js");
 
 router.use("/tattooStyles", tattoStyleRouter);
 router.use("/tattooArtists", tattooArtistsRouter);
